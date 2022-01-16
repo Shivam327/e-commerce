@@ -4,6 +4,7 @@ const AddProduct = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [xx, setxx] = useState('');
+  const [category, setCategory] = useState('');
   const categories = [
     'Accessory',
     'Book',
@@ -14,7 +15,7 @@ const AddProduct = () => {
   ];
   const addProduct = (e) => {
     e.preventDefault();
-    alert(name, description, xx);
+    alert(description + '  0  ' + xx + ' 0  ' + name + ' 0  ' + category);
   };
   return (
     <>
@@ -28,11 +29,12 @@ const AddProduct = () => {
             </div>
             <div className='col-auto'>
               <select
+                onChange={(e) => setCategory(e.target.value)}
                 class='form-select form-select-sm col-auto'
                 aria-label='.form-select-sm example'
               >
                 {categories.map((category) => (
-                  <option value={category}> {category} </option>
+                  <option> {category} </option>
                 ))}
               </select>
             </div>

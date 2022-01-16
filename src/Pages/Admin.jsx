@@ -1,68 +1,43 @@
 import React, { useContext, useState } from 'react';
 import AuthContext from '../store/store';
-const Admin = () => {
-  // const context = useContext(AuthContext)
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  console.log(
-    '----------------------------------------------------------------------',
-    isLoggedIn
-  );
 
+import LoginForm from '../Components/LoginForm';
+import AddProduct from '../Components/AddProduct';
+const Admin = () => {
+  const { isLoggedIn, onLogin, onLogout } = useContext(AuthContext);
+  const [username, setUsername] = useState('Admin');
+  const [password, setPassword] = useState('Admin123');
+
+  const login = (e) => {
+    e.preventDefault();
+    if (username.length === 0 && password.length === 0) {
+      alert('Please Enter Username & Password');
+    } else {
+      onLogin(username, password);
+    }
+  };
   return (
     <>
-      {isLoggedIn ? (
-        <>
-          <div className='col-3'></div>
-          <div className='col'>
-            {' '}
-            <form>
-              <div class='mb-3'>
-                <label for='exampleInputEmail1' class='form-label'>
-                  Email address
-                </label>
-                <input
-                  type='email'
-                  class='form-control'
-                  id='exampleInputEmail1'
-                  aria-describedby='emailHelp'
-                />
-                <div id='emailHelp' class='form-text'>
-                  We'll never share your email with anyone else.
-                </div>
-              </div>
-              <div class='mb-3'>
-                <label for='exampleInputPassword1' class='form-label'>
-                  Password
-                </label>
-                <input
-                  type='password'
-                  class='form-control'
-                  id='exampleInputPassword1'
-                />
-              </div>
-              <div class='mb-3 form-check'>
-                <input
-                  type='checkbox'
-                  class='form-check-input'
-                  id='exampleCheck1'
-                />
-                <label class='form-check-label' for='exampleCheck1'>
-                  Check me out
-                </label>
-              </div>
-              <button
-                type='submit'
-                class='btn btn-primary'
-                onClick={() => setIsLoggedIn(!isLoggedIn)}
-              >
-                Submit
-              </button>
-            </form>
-          </div>
-          <div className='col-3'></div>
-        </>
+      {!isLoggedIn ? (
+        <LoginForm
+          login={login}
+          username={username}
+          password={password}
+          setPassword={setPassword}
+          setUsername={setUsername}
+        />
       ) : (
-        'Nope'
+        <AddProduct />
+      )}
+
+      {isLoggedIn && (
+        <button
+          type='submit'
+          className='btn btn-primary'
+          onClick={() => onLogout()}
+        >
+          LogOut
+        </button>
       )}
     </>
   );

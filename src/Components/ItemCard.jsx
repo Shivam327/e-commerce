@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AuthContext from '../store/store';
 
 const ItemCard = (props) => {
+  const { isLoggedIn } = useContext(AuthContext);
   return (
     <div className='col-sm-6 my-3'>
       <div className='row m-1 border border-primary'>
@@ -21,6 +23,12 @@ const ItemCard = (props) => {
               >
                 Add to Cart
               </button>
+              {isLoggedIn && (
+                <button type='button' class='btn btn-primary ml-1'>
+                  {' '}
+                  Edit
+                </button>
+              )}
             </div>
           </div>
         </div>

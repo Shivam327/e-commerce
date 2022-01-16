@@ -12,7 +12,6 @@ const Homepage = () => {
     <>
       <Carousel />
       <div className='container'>
-        {context.isLoggedIn ? 'name' : 'Not Name'}
         <div className='row d-flex' style={{ margin: '1.5rem' }}>
           {categories.map((category) => (
             <Link className='col-sm-4 col' to={category.link}>

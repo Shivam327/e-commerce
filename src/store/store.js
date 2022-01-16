@@ -3,8 +3,14 @@ import React, { useState } from 'react';
 const AuthContext = React.createContext({
   isLoggedIn: true,
   onLogout: () => {},
-  // onLogin: (email, password) => {},
+  onLogin: () => {},
 });
+
+//Will
+const admin = {
+  username: 'Admin',
+  password: 'Admin123',
+};
 
 export const AuthContextProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -13,8 +19,12 @@ export const AuthContextProvider = (props) => {
     setIsLoggedIn(false);
   };
 
-  const loginHandler = () => {
-    setIsLoggedIn(true);
+  const loginHandler = (username, password) => {
+    if (username === admin.username && password === admin.password) {
+      setIsLoggedIn(true);
+    } else {
+      alert('Invaild Credentials');
+    }
   };
 
   return (
