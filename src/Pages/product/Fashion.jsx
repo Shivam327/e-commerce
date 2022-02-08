@@ -15,14 +15,7 @@ const Fashion = () => {
       <Heading>Fashion</Heading>
       <div className='row d-flex'>
         {fashion.map((fashion) => (
-          <ItemCard
-            id={fashion.id}
-            key={fashion.id}
-            name={fashion.data.name}
-            desc={fashion.data.descrption}
-            price={fashion.data.price}
-            description={fashion.data.description}
-          />
+          <ItemCard id={fashion.id} key={fashion.id} name={fashion.data.name} price={fashion.data.price} description={fashion.data.description} />
         ))}
       </div>
     </div>

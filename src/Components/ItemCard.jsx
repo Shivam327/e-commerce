@@ -5,9 +5,9 @@ import { success } from '../toastify';
 const ItemCard = ({ id, price, name, description, isEditable }) => {
   const [open, setOpen] = useState(false);
 
-  const handleClose = () => {
-    setOpen({ edit: false, view: false });
-  };
+  // const handleClose = () => {
+  //   setOpen({ edit: false, view: false });
+  // };
 
   return (
     <div className='col-sm-6 my-3'>

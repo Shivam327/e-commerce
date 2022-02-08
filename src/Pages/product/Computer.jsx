@@ -19,7 +19,6 @@ const Computer = () => {
             id={computer.id}
             key={computer.id}
             name={computer.data.name}
-            desc={computer.data.descrption}
             price={computer.data.price}
             description={computer.data.description}
           />

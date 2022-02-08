@@ -17,7 +17,7 @@ const Book = () => {
       <Heading>Book</Heading>
       <div className='row d-flex'>
         {book.map((book) => (
-          <ItemCard key={book.id} id={book.id} img={book.img} name={book.name} desc={book.descrption} price={book.price} />
+          <ItemCard id={book.id} key={book.id} name={book.data.name} price={book.data.price} description={book.data.description} />
         ))}
       </div>
     </div>

@@ -8,7 +8,7 @@ const AddProduct = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('Select');
 
   const categories = ['Select', 'Accessory', 'Book', 'Computer', 'Fashion', 'Electronic', 'Mobile'];
 
@@ -35,11 +35,11 @@ const AddProduct = () => {
   };
 
   function successMsg() {
-    productAdded();
     setName('');
     setDescription('');
     setPrice('');
-    setCategory();
+    setCategory('');
+    productAdded();
   }
   return (
     <>

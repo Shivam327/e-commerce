@@ -17,15 +17,7 @@ const Mobile = () => {
       <Heading>Mobiles</Heading>
       <div className='row d-flex'>
         {mobile.map((mobile) => (
-          <ItemCard
-            id={mobile.id}
-            key={mobile.id}
-            product={mobile.data.product}
-            name={mobile.data.name}
-            desc={mobile.data.descrption}
-            price={mobile.data.price}
-            description={mobile.data.description}
-          />
+          <ItemCard id={mobile.id} key={mobile.id} name={mobile.data.name} price={mobile.data.price} description={mobile.data.description} />
         ))}
       </div>
     </div>

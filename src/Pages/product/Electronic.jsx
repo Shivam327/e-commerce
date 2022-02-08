@@ -20,7 +20,6 @@ const Electronic = () => {
             id={electronic.id}
             key={electronic.id}
             name={electronic.data.name}
-            desc={electronic.data.descrption}
             price={electronic.data.price}
             description={electronic.data.description}
           />

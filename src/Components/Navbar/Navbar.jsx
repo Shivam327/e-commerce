@@ -25,15 +25,15 @@ const MainNavbar = () => {
           </button>
           <div className='collapse justify-content-end navbar-collapse' id='navbarNavAltMarkup'>
             <div className='navbar-nav m-lg-2'>
+              <Link className='nav-link' aria-current='page' to='/admin'>
+                Admin Login
+              </Link>
               {isLoggedIn ? (
                 <button type='submit' className='btn btn-danger' onClick={() => onLogout()} style={{ marginLeft: '1.5rem' }}>
                   LogOut
                 </button>
               ) : (
                 <>
-                  <Link className='nav-link' aria-current='page' to='/admin'>
-                    Admin Login
-                  </Link>
                   <Link className='nav-link' aria-current='page' to='/cart'>
                     <i className='bi bi-cart-plus'>Cart</i>
                   </Link>
