@@ -1,0 +1,35 @@
+import React, { useEffect, useState } from 'react';
+
+import { getData, category } from '../../utill';
+
+import Heading from '../../Components/Heading';
+import ItemCard from '../../Components/ItemCard';
+
+const Mobile = () => {
+  const [mobile, setMobile] = useState([]);
+
+  useEffect(() => {
+    getData(category['Accessory'], setMobile);
+  }, []);
+
+  return (
+    <div className='container'>
+      <Heading>Mobiles</Heading>
+      <div className='row d-flex'>
+        {mobile.map((mobile) => (
+          <ItemCard
+            id={mobile.id}
+            key={mobile.id}
+            product={mobile.data.product}
+            name={mobile.data.name}
+            desc={mobile.data.descrption}
+            price={mobile.data.price}
+            description={mobile.data.description}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Mobile;

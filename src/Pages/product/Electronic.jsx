@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { getData, category } from '../../utill';
 import Heading from '../../Components/Heading';
 import ItemCard from '../../Components/ItemCard';
-import { items } from '../../data';
 
-const Electronics = items.electronic;
 const Electronic = () => {
+  const [electronic, setElectronic] = useState([]);
+
+  useEffect(() => {
+    getData(category['Accessory'], setElectronic);
+  }, []);
+
   return (
     <div className='container '>
       <Heading>Electronics</Heading>
       <div className='row d-flex'>
-        {Electronics.map((electronic) => (
+        {electronic.map((electronic) => (
           <ItemCard
-            img={electronic.img}
-            name={electronic.name}
-            desc={electronic.descrption}
-            price={electronic.price}
             id={electronic.id}
+            key={electronic.id}
+            name={electronic.data.name}
+            desc={electronic.data.descrption}
+            price={electronic.data.price}
+            description={electronic.data.description}
           />
         ))}
       </div>

@@ -1,17 +1,19 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import AuthContext from '../../store/store';
 
 import { Link } from 'react-router-dom';
+
 const MainNavbar = () => {
+  const { isLoggedIn, onLogout } = useContext(AuthContext);
   return (
     <>
-      <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
-        <div class='container'>
-          <Link class='navbar-brand' to='/'>
+      <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
+        <div className='container'>
+          <Link className='navbar-brand' to='/'>
             E-Commerce
           </Link>
           <button
-            class='navbar-toggler'
+            className='navbar-toggler'
             type='button'
             data-bs-toggle='collapse'
             data-bs-target='#navbarNavAltMarkup'
@@ -19,19 +21,24 @@ const MainNavbar = () => {
             aria-expanded='false'
             aria-label='Toggle navigation'
           >
-            <span class='navbar-toggler-icon'></span>
+            <span className='navbar-toggler-icon'></span>
           </button>
-          <div
-            class='collapse justify-content-end navbar-collapse'
-            id='navbarNavAltMarkup'
-          >
-            <div class='navbar-nav m-lg-2'>
-              <Link class='nav-link' aria-current='page' to='/admin'>
-                Admin Login
-              </Link>
-              <Link class='nav-link' aria-current='page' to='/cart'>
-                <i class='bi bi-cart-plus'>Cart</i>
-              </Link>
+          <div className='collapse justify-content-end navbar-collapse' id='navbarNavAltMarkup'>
+            <div className='navbar-nav m-lg-2'>
+              {isLoggedIn ? (
+                <button type='submit' className='btn btn-danger' onClick={() => onLogout()} style={{ marginLeft: '1.5rem' }}>
+                  LogOut
+                </button>
+              ) : (
+                <>
+                  <Link className='nav-link' aria-current='page' to='/admin'>
+                    Admin Login
+                  </Link>
+                  <Link className='nav-link' aria-current='page' to='/cart'>
+                    <i className='bi bi-cart-plus'>Cart</i>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

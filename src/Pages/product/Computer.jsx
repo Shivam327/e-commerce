@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getData, category } from '../../utill';
 import Heading from '../../Components/Heading';
 import ItemCard from '../../Components/ItemCard';
-import { items } from '../../data';
 
-const Computers = items.computer;
 const Computer = () => {
+  const [computers, setComputer] = useState([]);
+
+  useEffect(() => {
+    getData(category['Book'], setComputer);
+  }, []);
+
   return (
     <div className='container'>
       <Heading>Computers</Heading>
       <div className='row d-flex'>
-        {Computers.map((compouter) => (
+        {computers.map((computer) => (
           <ItemCard
-            img={compouter.img}
-            name={compouter.name}
-            desc={compouter.descrption}
-            price={compouter.price}
+            id={computer.id}
+            key={computer.id}
+            name={computer.data.name}
+            desc={computer.data.descrption}
+            price={computer.data.price}
+            description={computer.data.description}
           />
         ))}
       </div>

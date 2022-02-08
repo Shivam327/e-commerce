@@ -1,20 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { Link } from 'react-router-dom';
 import MenuCard from '../Components/MenuCard';
-import Carousel from '../Components/Carousel';
+import Heading from '../Components/Heading';
 import { categories } from '../data';
-import AuthContext from '../store/store';
+
 const Homepage = () => {
-  const context = useContext(AuthContext);
-  console.log(context);
   return (
     <>
-      <Carousel />
-      <div className='container'>
-        <div className='row d-flex' style={{ margin: '1.5rem' }}>
+      <div className='container' style={{ marginTop: '1.5rem' }}>
+        <Heading>Category</Heading>
+        <div className='row align-middle' style={{ margin: '2.5rem' }}>
           {categories.map((category) => (
-            <Link className='col-sm-4 col' to={category.link}>
+            <Link key={category.name} className='col-sm-12 col-md-4' to={category.link}>
               <MenuCard>{category.name}</MenuCard>
             </Link>
           ))}

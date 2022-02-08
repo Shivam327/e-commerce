@@ -1,17 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router';
-
+import { ToastContainer, toast } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
-import {
-  Book,
-  Access,
-  Computer,
-  Electronic,
-  Mobiles,
-  Fashion,
-} from './Pages/product/';
+import { Book, Access, Computer, Electronic, Mobile, Fashion } from './Pages/product/';
 
 import MainNavbar from './Components/Navbar/Navbar';
 import ProductNav from './Components/Navbar/ProductNav';
@@ -52,8 +46,19 @@ function App() {
             <Route path='/fashion' element={<Fashion />} />
             <Route path='/electronic' element={<Electronic />} />
 
-            <Route path='/mobile' element={<Mobiles />} />
+            <Route path='/mobile' element={<Mobile />} />
           </Routes>
+          <ToastContainer
+            position='top-right'
+            autoClose={2500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </>
       )}
     </>

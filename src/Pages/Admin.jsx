@@ -17,29 +17,18 @@ const Admin = () => {
     }
   };
   return (
-    <>
+    <div className='container'>
       {!isLoggedIn ? (
-        <LoginForm
-          login={login}
-          username={username}
-          password={password}
-          setPassword={setPassword}
-          setUsername={setUsername}
-        />
+        <LoginForm login={login} username={username} password={password} setPassword={setPassword} setUsername={setUsername} />
       ) : (
-        <AddProduct />
+        <div className='row'>
+          <div className='col-sm-12 col-md-4'>
+            <AddProduct />
+          </div>
+          <div className='col-sm-12 col-md-8'></div>
+        </div>
       )}
-
-      {isLoggedIn && (
-        <button
-          type='submit'
-          className='btn btn-primary'
-          onClick={() => onLogout()}
-        >
-          LogOut
-        </button>
-      )}
-    </>
+    </div>
   );
 };
 
