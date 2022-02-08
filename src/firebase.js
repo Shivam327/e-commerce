@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
+import { collection, query, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
+import { warn } from './toastify';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDUBBhNzMjTUspcNqNaYlFN4BgTQOLsK_I',
@@ -14,4 +16,24 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+export const getData = (category, setProductsFunc) => {
+  const q = query(collection(db, 'product'));
+  onSnapshot(q, (querySnapshot) => {
+    const allProducts = querySnapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }));
+    const filteredData = allProducts.filter((product) => product.data.category === category);
+    setProductsFunc(filteredData);
+  });
+};
+
+export const handleDelete = async (id) => {
+  const taskDocRef = doc(db, 'product', id);
+  try {
+    warn();
+    deleteDoc(taskDocRef);
+  } catch (err) {
+    alert(err);
+  }
+};
+
 export { db };

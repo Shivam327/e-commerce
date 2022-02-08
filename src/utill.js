@@ -1,5 +1,5 @@
-import { collection, query, onSnapshot } from 'firebase/firestore';
-import { db } from './firebase';
+import { cartItems } from './Pages/Cart.jsx';
+import { success } from './toastify';
 
 export const category = {
   Accessory: 'Accessory',
@@ -10,12 +10,8 @@ export const category = {
   Mobile: 'Mobile',
 };
 
-export const getData = (category, setProductsFunc) => {
-  const q = query(collection(db, 'product'));
-  onSnapshot(q, (querySnapshot) => {
-    const allProducts = querySnapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }));
-    const filteredData = allProducts.filter((product) => product.data.category === category);
-    console.log(filteredData);
-    setProductsFunc(filteredData);
-  });
+export const addToCart = (item) => {
+  console.log(item);
+  cartItems.push(item);
+  // success();
 };

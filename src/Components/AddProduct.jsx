@@ -43,50 +43,46 @@ const AddProduct = () => {
   }
   return (
     <>
-      <div className='border  border-3 border-primary  my-5 text-primary'>
-        <form onSubmit={handleSubmit}>
-          <div className='row g-3 align-items-center m-3 position-relative'>
-            <div className='col-auto'>
+      <div className='border  border-3 border-primary  my-2 text-primary position-relative'>
+        <form onSubmit={handleSubmit} className='px-2'>
+          <div className='row g-3 align-items-center m-3 '>
+            <div className='col-4'>
               <label className='col-form-label'>Category</label>
             </div>
-            <div className='col-auto "d-flex justify-content-evenly"'>
-              <select
-                onChange={(e) => setCategory(e.target.value)}
-                className='form-select form-select-sm col-auto'
-                aria-label='.form-select-sm example'
-              >
+            <div className='col-8'>
+              <select onChange={(e) => setCategory(e.target.value)} className='form-select form-select-sm col-auto' aria-label='form-select-sm'>
                 {categories.map((category) => (
-                  <option> {category} </option>
+                  <option key={category}> {category} </option>
                 ))}
               </select>
             </div>
           </div>
           <div className='row g-3 align-items-center m-3'>
-            <div className='col-auto'>
+            <div className='col-4'>
               <label className='col-form-label'>Name</label>
             </div>
-            <div className='col-auto'>
+            <div className='col-8'>
               <input type='text' value={name} className='form-control' onChange={(e) => setName(e.target.value)} />
             </div>
           </div>
 
           <div className='row g-3 align-items-center m-3'>
-            <div className='col-auto'>
+            <div className='col-4'>
               <label className='col-form-label'>Description</label>
             </div>
-            <div className='col-auto'>
+            <div className='col-8'>
               <input type='text' value={description} className='form-control' onChange={(e) => setDescription(e.target.value)} />
             </div>
           </div>
           <div className='row g-3 align-items-center m-3'>
-            <div className='col-auto'>
+            <div className='col-4 '>
               <label className='col-form-label'>Price</label>
             </div>
-            <div className='col-auto'>
+            <div className='col-8'>
               <input type='number' value={price} className='form-control' onChange={(e) => setPrice(e.target.value)} />
             </div>
           </div>
-          <button type='submit' className='btn btn-primary m-3 offset-5'>
+          <button type='submit' className='btn btn-primary btn-md btn-block mb-2'>
             Submit
           </button>
           {/* <button type='button' className='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>

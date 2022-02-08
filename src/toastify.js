@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 
-export const success = (entity) => {
-  toast.success(`Item Added Successfully to the ${entity}`, {
+export const success = () => {
+  toast.success(`Item Added Successfully`, {
     position: 'top-right',
     autoClose: 2500,
     hideProgressBar: false,
@@ -12,7 +12,7 @@ export const success = (entity) => {
   });
 };
 
-export const productAdded = (entity) => {
+export const productAdded = () => {
   toast.success(`Item Added Successfully to the List`, {
     position: 'top-center',
     autoClose: 2500,
@@ -23,8 +23,8 @@ export const productAdded = (entity) => {
     progress: undefined,
   });
 };
-export const warn = (entity) => {
-  toast.warn(`Item deteted Successfuly to the ${entity}`, {
+export const warn = () => {
+  toast.warn(`Item deleted Successfully`, {
     position: 'top-right',
     autoClose: 2500,
     hideProgressBar: false,
